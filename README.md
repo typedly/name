@@ -58,7 +58,7 @@ import {
 
 ### Interfaces
 
-- [`AffixConfiguration`](https://github.com/typedly/name/blob/main/src/interface/affix-configuration.interface.ts),
+- [`AffixConfiguration`](https://github.com/typedly/name/blob/main/src/interface/affix-configuration.interface.ts)
 - [`AffixOptions`](https://github.com/typedly/name/blob/main/src/interface/affix-options.interface.ts)
 - [`NameAffix`](https://github.com/typedly/name/blob/main/src/interface/name-affix.interface.ts)
 - [`NameConfiguration`](https://github.com/typedly/name/blob/main/src/interface/name-configuration.interface.ts)
