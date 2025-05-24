@@ -14,18 +14,20 @@ export interface NameConfiguration<
   NameValue extends string = string,
   SuffixValue extends string = string,
   Delimiter extends string = string
-> {
+> extends 
   /**
    * @description The prefix placed at the beginning  of the `name`. Defaults to `string`.
    * @type {Pick<NameAdfix<PrefixValue, SuffixValue>, 'prefix'>}
    */
-  prefix: Pick<NameAdfix<PrefixValue, SuffixValue>, 'prefix'>,
+  Pick<NameAdfix<PrefixValue, SuffixValue>, 'prefix'>,
+
   /**
    * @description The suffix placed at the end of the `name`. Defaults to `string`.
    * @type {Pick<NameAdfix<PrefixValue, SuffixValue>, 'suffix'>}
    */
-  suffix: Pick<NameAdfix<PrefixValue, SuffixValue>, 'suffix'>,
-  /**
+  Pick<NameAdfix<PrefixValue, SuffixValue>, 'suffix'> {
+
+    /**
    * @description The delimiter placed between the `prefix` and `suffix`. Defaults to `string`.
    * @type {Delimiter}
    */
