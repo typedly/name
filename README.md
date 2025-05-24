@@ -23,14 +23,12 @@ A **TypeScript** type definitions package for name.
 - [Installation](#installation)
 - [Api](#api)
   - [Interfaces](#interfaces)
-    - `AffixConfiguration`
-    - `AffixOptions`
-    - `NameAffix`
-    - `NameConfiguration`
-    - `NameOptions`
+    - [`NameAdfix`](#nameadfix)
+    - [`NameConfiguration`](#nameconfiguration)
+    - [`NameOptions`](#nameoptions)
   - [Types](#types)
-    - `AffixedName`
-    - `SafeDelimiter`
+    - [`AdfixedName`](#adfixedname)
+    - [`SafeDelimiter`](#safedelimiter)
 - [Contributing](#contributing)
 - [Support](#support)
 - [Code of Conduct](#code-of-conduct)
@@ -41,6 +39,14 @@ A **TypeScript** type definitions package for name.
 
 ## Installation
 
+### Install peer dependencies
+
+```bash
+npm install @typedly/affix --save-peer
+```
+
+### Install the package
+
 ```bash
 npm install @typedly/name --save-peer
 ```
@@ -50,24 +56,86 @@ npm install @typedly/name --save-peer
 ```typescript
 import {
   // Interface.
-  AffixOptions, NameAffix, NameConfiguration, NameOptions
+  NameAdfix, NameConfiguration, NameOptions
   // Type.
-  AffixedName, SafeDelimiter
+  AdfixedName, SafeDelimiter
 } from '@typedly/name';
 ```
 
 ### Interfaces
 
-- [`AffixConfiguration`](https://github.com/typedly/name/blob/main/src/interface/affix-configuration.interface.ts)
-- [`AffixOptions`](https://github.com/typedly/name/blob/main/src/interface/affix-options.interface.ts)
-- [`NameAffix`](https://github.com/typedly/name/blob/main/src/interface/name-affix.interface.ts)
-- [`NameConfiguration`](https://github.com/typedly/name/blob/main/src/interface/name-configuration.interface.ts)
-- [`NameOptions`](https://github.com/typedly/name/blob/main/src/interface/name-options.interface.ts)
+#### `NameAdfix`
+
+[`name-affix.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-affix.interface.ts)
+
+```typescript
+import type { NameAdfix } from '@typedly/name';
+
+const affix: NameAdfix<'app', 'item'> = {
+  prefix: 'app',
+  suffix: { value: 'item', pattern: /[^a-z0-9]/g }
+};
+```
+
+#### `NameConfiguration`
+
+[`name-configuration.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-configuration.interface.ts)
+
+```typescript
+import { NameConfiguration } from '@typedly/name';
+
+const fullNameConfig: NameConfiguration<'app', 'button', 'large', '-'> = {
+  prefix: 'app',
+  name: 'button',
+  suffix: 'large',
+  delimiter: '-',
+  pattern: /[^a-z0-9]/gi
+};
+```
+
+#### `NameOptions`
+
+[`name-options.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-options.interface.ts)
+
+```typescript
+import type { NameOptions } from '@typedly/name';
+
+const nameOpts: NameOptions<'app', 'card', 'primary', '-'> = {
+  prefix: { value: 'app' },
+  name: 'card',
+  suffix: 'primary'
+  // delimiter and pattern are optional
+};
+
+```
 
 ### Types
 
-- [`AffixedName`](https://github.com/typedly/name/blob/main/src/type/affixed-name.type.ts)
-- [`SafeDelimiter`](https://github.com/typedly/name/blob/main/src/type/safe-delimiter.type.ts)
+#### `AdfixedName`
+
+[`affixed-name.type.ts`](https://github.com/typedly/name/blob/main/src/type/affixed-name.type.ts)
+
+```typescript
+import type { AdfixedName } from '@typedly/name';
+
+type ClassName = AdfixedName<'app', 'button', 'primary', '-'>;
+// Result: "app-button-primary"
+
+type IdName = AdfixedName<'', 'form', 'container', '_'>;
+// Result: "form_container"
+```
+
+#### `SafeDelimiter`
+
+[`safe-delimiter.type.ts`](https://github.com/typedly/name/blob/main/src/type/safe-delimiter.type.ts)
+
+```typescript
+import type { NameAffix } from '@typedly/name';
+
+const delimiter: SafeDelimiter = '--'; // allowed
+// const badDelimiter: SafeDelimiter = '.'; // error: not assignable
+
+```
 
 ## Contributing
 
