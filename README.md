@@ -130,7 +130,7 @@ type IdName = AdfixedName<'', 'form', 'container', '_'>;
 [`safe-delimiter.type.ts`](https://github.com/typedly/name/blob/main/src/type/safe-delimiter.type.ts)
 
 ```typescript
-import { NameAffix } from '@typedly/name';
+import { SafeDelimiter } from '@typedly/name';
 
 const delimiter: SafeDelimiter = '--'; // allowed
 // const badDelimiter: SafeDelimiter = '.'; // error: not assignable
