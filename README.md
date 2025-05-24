@@ -106,14 +106,13 @@ const nameOpts: NameOptions<'app', 'card', 'primary', '-'> = {
   suffix: 'primary'
   // delimiter and pattern are optional
 };
-
 ```
 
 ### Types
 
 #### `AdfixedName`
 
-[`affixed-name.type.ts`](https://github.com/typedly/name/blob/main/src/type/affixed-name.type.ts)
+[`adfixed-name.type.ts`](https://github.com/typedly/name/blob/main/src/type/adfixed-name.type.ts)
 
 ```typescript
 import { AdfixedName } from '@typedly/name';
