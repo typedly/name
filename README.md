@@ -23,14 +23,12 @@ A **TypeScript** type definitions package for name.
 - [Installation](#installation)
 - [Api](#api)
   - [Interfaces](#interfaces)
-    - `AffixConfiguration`
-    - `AffixOptions`
-    - `NameAffix`
-    - `NameConfiguration`
-    - `NameOptions`
+    - [`NameAdfix`](#nameadfix)
+    - [`NameConfiguration`](#nameconfiguration)
+    - [`NameOptions`](#nameoptions)
   - [Types](#types)
-    - `AffixedName`
-    - `SafeDelimiter`
+    - [`AdfixedName`](#adfixedname)
+    - [`SafeDelimiter`](#safedelimiter)
 - [Contributing](#contributing)
 - [Support](#support)
 - [Code of Conduct](#code-of-conduct)
@@ -41,6 +39,14 @@ A **TypeScript** type definitions package for name.
 
 ## Installation
 
+### Install peer dependencies
+
+```bash
+npm install @typedly/affix --save-peer
+```
+
+### Install the package
+
 ```bash
 npm install @typedly/name --save-peer
 ```
@@ -50,24 +56,86 @@ npm install @typedly/name --save-peer
 ```typescript
 import {
   // Interface.
-  AffixOptions, NameAffix, NameConfiguration, NameOptions
+  NameAdfix, NameConfiguration, NameOptions,
   // Type.
-  AffixedName, SafeDelimiter
+  AdfixedName, SafeDelimiter
 } from '@typedly/name';
 ```
 
 ### Interfaces
 
-- [`AffixConfiguration`](https://github.com/typedly/name/blob/main/src/interface/affix-configuration.interface.ts)
-- [`AffixOptions`](https://github.com/typedly/name/blob/main/src/interface/affix-options.interface.ts)
-- [`NameAffix`](https://github.com/typedly/name/blob/main/src/interface/name-affix.interface.ts)
-- [`NameConfiguration`](https://github.com/typedly/name/blob/main/src/interface/name-configuration.interface.ts)
-- [`NameOptions`](https://github.com/typedly/name/blob/main/src/interface/name-options.interface.ts)
+#### `NameAdfix`
+
+[`name-adfix.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-adfix.interface.ts)
+
+```typescript
+import { NameAdfix } from '@typedly/name';
+
+const affix: NameAdfix<'app', 'item'> = {
+  prefix: 'app',
+  suffix: { value: 'item', pattern: /[^a-z0-9]/g }
+};
+```
+
+#### `NameConfiguration`
+
+[`name-configuration.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-configuration.interface.ts)
+
+```typescript
+import { NameConfiguration } from '@typedly/name';
+
+const fullNameConfig: NameConfiguration<'app', 'button', 'large', '-'> = {
+  prefix: 'app',
+  name: 'button',
+  suffix: 'large',
+  delimiter: '-',
+  pattern: /[^a-z0-9]/gi
+};
+```
+
+#### `NameOptions`
+
+[`name-options.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-options.interface.ts)
+
+```typescript
+import { NameOptions } from '@typedly/name';
+
+const nameOpts: NameOptions<'app', 'card', 'primary', '-'> = {
+  prefix: { value: 'app' },
+  name: 'card',
+  suffix: 'primary'
+  // delimiter and pattern are optional
+};
+
+```
 
 ### Types
 
-- [`AffixedName`](https://github.com/typedly/name/blob/main/src/type/affixed-name.type.ts)
-- [`SafeDelimiter`](https://github.com/typedly/name/blob/main/src/type/safe-delimiter.type.ts)
+#### `AdfixedName`
+
+[`affixed-name.type.ts`](https://github.com/typedly/name/blob/main/src/type/affixed-name.type.ts)
+
+```typescript
+import { AdfixedName } from '@typedly/name';
+
+type ClassName = AdfixedName<'app', 'button', 'primary', '-'>;
+// Result: "app-button-primary"
+
+type IdName = AdfixedName<'', 'form', 'container', '_'>;
+// Result: "form_container"
+```
+
+#### `SafeDelimiter`
+
+[`safe-delimiter.type.ts`](https://github.com/typedly/name/blob/main/src/type/safe-delimiter.type.ts)
+
+```typescript
+import { SafeDelimiter } from '@typedly/name';
+
+const delimiter: SafeDelimiter = '--'; // allowed
+// const badDelimiter: SafeDelimiter = '.'; // error: not assignable
+
+```
 
 ## Contributing
 
@@ -81,6 +149,17 @@ Support via:
 
 - [Stripe](https://donate.stripe.com/dR614hfDZcJE3wAcMM)
 - [Revolut](https://checkout.revolut.com/pay/048b10a3-0e10-42c8-a917-e3e9cb4c8e29)
+- [GitHub](https://github.com/sponsors/angular-package/sponsorships?sponsor=sciborrudnicki&tier_id=83618)
+- [DonorBox](https://donorbox.org/become-a-sponsor-to-the-angular-package?default_interval=o)
+- [Patreon](https://www.patreon.com/checkout/angularpackage?rid=0&fan_landing=true&view_as=public)
+
+or via Trust Wallet
+
+- [XLM](https://link.trustwallet.com/send?coin=148&address=GAFFFB7H3LG42O6JA63FJDRK4PP4JCNEOPHLGLLFH625X2KFYQ4UYVM4)
+- [USDT (BEP20)](https://link.trustwallet.com/send?coin=20000714&address=0xA0c22A2bc7E37C1d5992dFDFFeD5E6f9298E1b94&token_id=0x55d398326f99059fF775485246999027B3197955)
+- [ETH](https://link.trustwallet.com/send?coin=60&address=0xA0c22A2bc7E37C1d5992dFDFFeD5E6f9298E1b94)
+- [BTC](https://link.trustwallet.com/send?coin=0&address=bc1qnf709336tfl57ta5mfkf4t9fndhx7agxvv9svn)
+- [BNB](https://link.trustwallet.com/send?coin=20000714&address=0xA0c22A2bc7E37C1d5992dFDFFeD5E6f9298E1b94)
 
 Thanks for your support!
 

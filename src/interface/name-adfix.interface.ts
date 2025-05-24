@@ -1,12 +1,12 @@
 // Type.
-import { AffixOptions } from ".";
+import { AffixOptions } from "@typedly/affix";
 /**
- * @description Defines the name affix type.
+ * @description Represents adfix configuration object of optional prefix and suffix properties.
  * @export
  * @template {string} PrefixValue The type of `prefix` constrained by `string`.
  * @template {string} SuffixValue The type of `suffix` constrained by `string`.
  */
-export interface NameAffix<
+export interface NameAdfix<
   PrefixValue extends string,
   SuffixValue extends string
 > {
