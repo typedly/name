@@ -1,5 +1,13 @@
 /*
  * Public API Surface of name
  */
-export * from './interface';
-export * from './type';
+export type {
+  NameAdfix,
+  NameConfiguration,
+  NameOptions,
+} from './interface';
+
+export type {
+  AdfixedName,
+  SafeDelimiter
+} from './type';
