@@ -56,7 +56,7 @@ npm install @typedly/name --save-peer
 ```typescript
 import {
   // Interface.
-  NameAdfix, NameConfiguration, NameOptions
+  NameAdfix, NameConfiguration, NameOptions,
   // Type.
   AdfixedName, SafeDelimiter
 } from '@typedly/name';
@@ -66,7 +66,7 @@ import {
 
 #### `NameAdfix`
 
-[`name-affix.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-affix.interface.ts)
+[`name-adfix.interface.ts`](https://github.com/typedly/name/blob/main/src/interface/name-adfix.interface.ts)
 
 ```typescript
 import type { NameAdfix } from '@typedly/name';
